@@ -1,10 +1,24 @@
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
-const categories = ["Informática","Beleza e perfumaria","Eletrodomesticos","Games","Tv e video","Audio","Celulares e Smartphones","Casa inteligente","Tablets e Ipads","Eletroportateis","Automotivo"];
-
 function Header({ simple, hideAuth }) {
-  let title = process.env.APP_NAME;
+  const [categories, setCategories] = useState([]); 
+  const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    fetchCategories();    
+  }, []);
+
+  const fetchCategories = async () => {
+    // setLoading(true);
+    fetch(`${process.env.API_BASE_URL}/category`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data)
+    })  
+  };
+
   return (
     <header className="fixed-top">
       <nav className="navbar navbar-expand-xl navbar-light bg-white border-bottom">
@@ -26,10 +40,11 @@ function Header({ simple, hideAuth }) {
                   placeholder="Buscar um produto..."
                   aria-label="Buscar um produto"
                   size="32"
+                  value={searchInput} onInput={e => setSearchInput(e.target.value)}
                 />
-                <button type="button" className="btn btn-primary">
+                <Link href={`/busca/${searchInput}`} className="btn btn-primary">
                   <FontAwesomeIcon icon={["fas", "search"]} />
-                </button>
+                </Link>
               </div>
           </div>
         </div>
@@ -65,10 +80,10 @@ function Header({ simple, hideAuth }) {
                     className="dropdown-menu dropdown-menu-macos dropdown-menu-start"
                     aria-labelledby="languageMenuLink"
                   >
-                    {categories.map((e, i) => {
+                    {categories.map((category, index) => {
                       return <li>
-                        <a href="#" className="dropdown-item">
-                          {e}
+                        <a href={`/categoria/${category.name}`} className="dropdown-item">
+                          {category.display_name}
                         </a>
                       </li>;
                     })}
@@ -77,13 +92,13 @@ function Header({ simple, hideAuth }) {
               </ul>              
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link href="/explore">
-                    <span className="nav-link">Ofertas</span>
+                  <Link className="nav-link" href="/">
+                    <span>Ofertas</span>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="/explore">
-                    <span className="nav-link">Lojas</span>
+                  <Link className="nav-link" href="/loja">
+                    <span>Lojas</span>
                   </Link>
                 </li>                
               </ul>

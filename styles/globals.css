@@ -114,12 +114,12 @@ body {
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(85, 85, 85, 0.75);
   text-decoration: none;
 }
 
 .footer-link:hover {
-  color: white;
+  color: rgb(97, 97, 97);
   text-decoration: none;
 }
 
