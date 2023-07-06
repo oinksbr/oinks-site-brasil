@@ -26,7 +26,7 @@ function Header({ simple, hideAuth }) {
           <Link href="/">
             <div className="navbar-brand">              
               <img               
-                src={`https://oinks.com.br/wp-content/uploads/logo_oinks.png`}
+                src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/site-content/site_logo_g.png`}
                 width={160}
                 height={35}                
               />
