@@ -19,7 +19,7 @@ function Category() {
 
     const fetchProducts = async () => {
         const params = `page=${page}&size=50&sort_by=${encodeURIComponent(sortProducts)}`;
-        await fetch(`${process.env.API_BASE_URL}/category/${category}?${params}`)
+        await fetch(`${process.env.API_BASE_URL}/deal/category/${category}?${params}`)
             .then((response) => response.json())
             .then((data) => {
                 setProducts(data)
