@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Pagination({currentPage, totalPages}) {
   const [currentPageButton, setCurrentPageButton] = useState(1);
-  const limit = process.env.PAGINATION_DISPLAY_PAGES;
-  const [pages, setPages] = useState(Array.from({length: totalPages <= limit ? totalPages : limit}, (_, i) => i + 1));
+  const limit = parseInt(process.env.PAGINATION_DISPLAY_PAGES);
 
+
+  const [pages, setPages] = useState(Array.from({length: totalPages <= limit ? totalPages : limit}, (_, i) => i + 1));
+  console.log(pages);
   useEffect(() => {
     setVisiblePages();
   }, [currentPageButton]);
