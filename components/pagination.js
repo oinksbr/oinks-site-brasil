@@ -3,6 +3,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Pagination({currentPage, totalPages}) {
   const [currentPageButton, setCurrentPageButton] = useState(1);
+  const limit = process.env.PAGINATION_DISPLAY_PAGES;
+  const [pages, setPages] = useState(Array.from({length: totalPages <= limit ? totalPages : limit}, (_, i) => i + 1));
+
+  useEffect(() => {
+    setVisiblePages();
+  }, [currentPageButton]);
+
+  function setVisiblePages() {       
+    const currentPages = [...pages];    
+    if (totalPages > limit) { 
+        if (pages.indexOf(currentPageButton) === limit-1) {       
+            if (currentPageButton < totalPages) { 
+                currentPages.splice(0, 1);
+                currentPages.push(currentPageButton+1)
+            }   
+        }
+        if (currentPages.indexOf(currentPageButton) === 0) {
+            if (currentPageButton > 1) { 
+                currentPages.splice(currentPages.length-1, 1);
+                currentPages.splice(0, 0, currentPageButton-1)
+            }   
+        }
+        setPages(currentPages)
+    }
+}
 
   function setCurrentPage(number) {
     currentPage(number);
@@ -29,7 +54,7 @@ function Pagination({currentPage, totalPages}) {
                             })()}
 
                             {                
-                                Array.from({length: totalPages}, (_, i) => i + 1).map((number) => {                   
+                                pages.map((number) => {                   
                                     return (
                                         <li className={`page-item ${currentPageButton === number ? "active" : ""}`}>
                                             <a className="page-link" href="#" onClick={() => setCurrentPage(number)}>
