@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 function Header({ simple, hideAuth }) {
   const [categories, setCategories] = useState([]); 
   const [searchInput, setSearchInput] = useState("");
+  const inputSearchRef = createRef();
 
   useEffect(() => {
     fetchCategories();    
@@ -17,6 +18,12 @@ function Header({ simple, hideAuth }) {
       .then((data) => {
         setCategories(data)
     })  
+  };
+
+  const handleOnKeyDown = e => {
+    if (e.keyCode === 13) {
+      inputSearchRef.current.click();
+    }
   };
 
   return (
@@ -41,8 +48,9 @@ function Header({ simple, hideAuth }) {
                   aria-label="Buscar um produto"
                   size="32"
                   value={searchInput} onInput={e => setSearchInput(e.target.value)}
+                  onKeyDown={handleOnKeyDown}
                 />
-                <Link href={`/busca/${searchInput}`} className="btn btn-primary">
+                <Link href={`/busca/${searchInput}`} className="btn btn-primary" ref={inputSearchRef}>
                   <FontAwesomeIcon icon={["fas", "search"]} />
                 </Link>
               </div>
