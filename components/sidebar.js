@@ -2,14 +2,29 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AdvertisingSidebarCard from "./advertising/advertising-sidebar-card";
 
-function Sidebar({ advertising }) {
+function Sidebar({}) {
+    const [advertisings, setAdvertisings] = useState([]);
+
+    useEffect(() => {
+        fetchAdvertisings();    
+    }, []);
+
+    const fetchAdvertisings = async () => {
+        // setLoading(true);
+        fetch(`${process.env.API_BASE_URL}/advertising`)
+        .then((response) => response.json())
+        .then((data) => {
+            setAdvertisings(data)
+        })  
+    };
+    
     return (
         <>
             {
-                advertising.filter(item => item.type === "sidebar")?.map((propaganda, index) => {
+                advertisings.filter(item => item.type === "sidebar")?.map((advertising, index) => {
                     return (
                         <div className="accordion-item">
-                            <AdvertisingSidebarCard advertising={propaganda} />
+                            <AdvertisingSidebarCard advertising={advertising} />
                         </div>
                     )
                 })

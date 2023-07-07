@@ -10,8 +10,7 @@ function Category() {
     const category = router.query.category;
     const [products, setProducts] = useState([]);
     const [sortProducts, setSortProducts] = useState("-discount");
-    const [page, setPage] = useState(1)
-    const propagandas = [{ "id": 1, "name": "amazon", "index": 3, "image_url": "https://i.promobit.com.br/185761646816879928968906621814_banner.png", "type": "grid" }, { "id": 2, "name": "amazon", "index": 1, "image_url": "https://ww1.nam.ac.uk/wp-content/uploads/2014/07/1015646.jpg", "type": "sidebar" }, { "id": 2, "name": "amazon", "index": 2, "image_url": "https://pt-br-media-publications.shopfully.cloud/publications/page_assets/419534/2/page_2_level_2_1555278997.jpeg", "type": "sidebar" }]
+    const [page, setPage] = useState(1)   
 
     useEffect(() => {
         fetchProducts();
@@ -34,7 +33,7 @@ function Category() {
                         <ProductGrid products={products} />
                     </div>
                     <div className="col-lg-3 vstack gap-2">
-                        <Sidebar advertising={propagandas} />
+                        <Sidebar />
                     </div>
                     <Pagination currentPage={setPage} totalPages={products.totalPages} />
                 </div>
