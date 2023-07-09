@@ -108,12 +108,9 @@ function ProductDetail() {
                 <hr className="text-muted" />
                 
                 <div className="d-flex mt-4">
-                  <a
-                    href="#"
-                    className="btn btn-primary px-md-4 col col-md-auto me-2"
-                  >
-                    Ver na {product.store.charAt(0).toUpperCase() + product.store.slice(1)}
-                  </a>
+                <button className="btn btn-primary px-md-4 col col-md-auto me-2" onClick={() => window.open(product.url, '_blank', 'noreferrer')}>
+                Ver na {product.store.charAt(0).toUpperCase() + product.store.slice(1)}
+                </button>
                 </div>
               </div>
             </div>
