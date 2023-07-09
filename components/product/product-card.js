@@ -44,7 +44,7 @@ function ProductCard({ product }) {
   }
   return (
     <div className="card h-100 border-0 shadow-sm">
-      <Link href="/product/1">
+      <Link href={`/produto/${product.oink}`}>
 
         <div className="ratio ratio-1x1">
           <img
@@ -65,7 +65,7 @@ function ProductCard({ product }) {
             <span className="fw-price">{price}</span>
 
           </div>
-          <Link className="text-product.title text-decoration-none" href="/product/1">
+          <Link className="text-product.title text-decoration-none" href={`/produto/${product.oink}`}>
             <span>{product.title}</span>
           </Link>
         </div>
