@@ -6,12 +6,30 @@ function ProductCard({ product }) {
   let percentOff;
   let price;
   let offPrice;
+  let storeFolder;
+  let discountBackground;
+
+  if (product.discount >= 75){
+    discountBackground = "bg-discount-75";
+  }
+  else if (product.discount >= 50){
+    discountBackground = "bg-discount-50";
+  }
+  else if (product.discount >= 25){
+    discountBackground = "bg-discount-25";
+  }
+  else if (product.discount >= 10){
+    discountBackground = "bg-discount-10";
+  }
+  else{
+    discountBackground = "bg-discount-0";
+  }
 
   if (product.discount && product.discount > 0) {
     percentOff = (
       <>
         <div
-          className="badge bg-mint py-2 text-white position-absolute"
+          className={`badge bg-mint py-2 text-white position-absolute`}
           style={{ top: "0.5rem", left: "0.5rem" }}
         >
           {product.discount}%
@@ -39,6 +57,11 @@ function ProductCard({ product }) {
       );
     }
 
+    storeFolder = ({
+      "amazon": "amz",
+      "magalu": "mlu",
+    });
+
 
 
   }
@@ -49,7 +72,7 @@ function ProductCard({ product }) {
         <div className="ratio ratio-1x1">
           <img
             className="card-img-top "
-            src={product.image}
+            src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/uploads/${storeFolder[product.store]}/${product.oink}-300x300.png`}
             alt="Product product.image."
             style={{ objectFit: "cover" }}
           />

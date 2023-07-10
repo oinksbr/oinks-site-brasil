@@ -8044,6 +8044,26 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-brandeis-blue-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-discount-75 {  
+  background-color: #F84F25 !important;
+}
+
+.bg-discount-50 {  
+  background-color: #f95d36 !important;
+}
+
+.bg-discount-25 {  
+  background-color: #f96b48 !important;
+}
+
+.bg-discount-10 {  
+  background-color: #fa7959 !important;
+}
+
+.bg-discount-0 {  
+  background-color: #fa876b !important;
+}
+
 .bg-transparent {
   --bs-bg-opacity: 1;
   background-color: transparent !important;

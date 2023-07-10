@@ -9,7 +9,8 @@ function ProductDetail() {
     const oink = router.query.oink;
     const [product, setProduct] = useState(null);
     const [relatedProducts, setRelatedProducts] = useState(null);
-       
+    const [storeFolder, setStoreFolder] = useState({});
+
     useEffect(() => {
         fetchProduct();    
     }, [oink]);
@@ -17,6 +18,12 @@ function ProductDetail() {
     useEffect(() => {  
       if (product != null){   
         fetchRelatedProducts(product.title)
+
+        setStoreFolder({
+          "amazon": "amz",
+          "magalu": "mlu",
+        });
+
      };
   }, [product]);
 
@@ -71,9 +78,8 @@ function ProductDetail() {
                   <div className="ratio ratio-1x1">
                     <img
                       className="rounded"
-                      src={product.image_url}
-                      width={300}
-                      height={300}
+                      src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/uploads/${storeFolder[product.store]}/${product.oink}.png`}
+                      
                       alt="Product image."
                     />
                   </div>

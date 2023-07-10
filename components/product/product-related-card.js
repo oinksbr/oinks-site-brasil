@@ -5,6 +5,7 @@ function ProductRelatedCard({ product }) {
   let percentOff;
   let price;
   let offPrice;
+  let storeFolder;
 
   if (product.discount && product.discount > 0) {
     percentOff = (
@@ -38,6 +39,12 @@ function ProductRelatedCard({ product }) {
       </>
     );
   }
+
+  storeFolder = ({
+    "amazon": "amz",
+    "magalu": "mlu",
+  });
+  
   return (
     <div className="py-2 vstack">
       <div className="card h-100 border-0 shadow-sm">
@@ -45,7 +52,7 @@ function ProductRelatedCard({ product }) {
           <a href={`/produto/${product.oink}`}>
             <img
               className="card-img-top"
-              src={product.image}
+              src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/uploads/${storeFolder[product.store]}/${product.oink}-300x300.png`}
               style={{ objectFit: "cover" }}
             />
           </a>
