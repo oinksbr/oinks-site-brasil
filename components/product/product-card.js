@@ -45,14 +45,14 @@ function ProductCard({ product }) {
 
     price = (
       <>
-        R$ {product.current_price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+        R$ {parseFloat(product.current_price).toLocaleString('pt-br', { minimumFractionDigits: 2 })}
       </>
     );
 
     if (product.original_price !== null) {
       offPrice = (
         <>
-          <del className="text-muted small fw-normal">R$ {product.original_price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</del>
+          <del className="text-muted small fw-normal">R$ {parseFloat(product.original_price).toLocaleString('pt-br', { minimumFractionDigits: 2 })}</del>
         </>
       );
     }

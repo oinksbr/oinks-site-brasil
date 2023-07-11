@@ -99,10 +99,10 @@ function ProductDetail() {
                 </div>  
                 {
                     product.original_price !== null ? 
-                    <del className="text-muted fw-original-price">R$ {product.original_price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</del>
+                    <del className="text-muted fw-original-price">R$ {parseFloat(product.original_price).toLocaleString('pt-br', { minimumFractionDigits: 2 })}</del>
                     : null
                 }
-                <h4 className="fw-price">R$ {product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h4>               
+                <h4 className="fw-price">R$ {parseFloat(product.price).toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h4>               
                 <dl className="row mb-2 mt-4 text-black-3">
                   <dt className="col-sm-3 fw-semibold">Loja</dt>
                   <dd className="col-sm-9 text-capitalize">{product.store}</dd>
