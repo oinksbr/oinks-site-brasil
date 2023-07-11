@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AdvertisingSidebarCard from "./advertising/advertising-sidebar-card";
+import GoogleAdSenseSidebarSquareCard from "./advertising/google-adsense-sidebar-square-card";
+import GoogleAdSenseSidebarVerticalCard from "./advertising/google-adsense-sidebar-vertical-card";
 
-function Sidebar({}) {
+function Sidebar({ }) {
     const [advertisings, setAdvertisings] = useState([]);
 
     useEffect(() => {
-        fetchAdvertisings();    
+        fetchAdvertisings();
     }, []);
 
     const fetchAdvertisings = async () => {
         // setLoading(true);
         fetch(`${process.env.API_BASE_URL}/advertising`)
-        .then((response) => response.json())
-        .then((data) => {
-            setAdvertisings(data)
-        })  
+            .then((response) => response.json())
+            .then((data) => {
+                setAdvertisings(data)
+            })
     };
-    
+
     return (
         <>
+            <div className="accordion-item">
+                <GoogleAdSenseSidebarSquareCard />
+            </div>   
+            <div className="accordion-item">
+                <GoogleAdSenseSidebarVerticalCard />
+            </div>           
             {
                 advertisings.filter(item => item.type === "sidebar")?.map((advertising, index) => {
                     return (
@@ -38,14 +46,14 @@ function Sidebar({}) {
                 <div className="accordion-collapse collapse show">
                     <div className="accordion-body pt-2">
                         <div className="vstack gap-2">
-                            <div className="hstack align-self-center gap-4">                            
+                            <div className="hstack align-self-center gap-4">
                                 <a href="#" className="link-social">
                                     <FontAwesomeIcon icon={["fab", "whatsapp"]} size="lg" />
                                 </a>
                                 <a href="#" className="link-social">
                                     <FontAwesomeIcon icon={["fab", "telegram"]} size="lg" />
                                 </a>
-                                <a href="#" className="link-social">                               
+                                <a href="#" className="link-social">
                                     <FontAwesomeIcon icon={["fab", "facebook-f"]} size="lg" />
                                 </a>
                                 <a href="#" className="link-social">

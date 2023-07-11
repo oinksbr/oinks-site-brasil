@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./product-card";
 import AdvertisingCard from "../advertising/advertising-card";
+import GoogleAdSenseCard from "../advertising/google-adsense-card";
 
 function ProductGrid({ products }) {
   const [advertisings, setAdvertisings] = useState([]);
@@ -26,18 +27,25 @@ function ProductGrid({ products }) {
           return (
             <>
               {advertising ?
-                (<div className="col">
-                  <AdvertisingCard advertising={advertising} />
-                </div>) : null}
+                  (<div className="col">
+                    <AdvertisingCard advertising={advertising} />
+                  </div>) : null}
+              {index===3 ?
+                (
+                <div className="col">
+                  <GoogleAdSenseCard  />
+                 </div>     
+                ) : null}
               <div className="col">
                 <ProductCard product={product} />
-              </div>
+              </div>                      
             </>
           )
         }
         )
       }
     </div>
+    
   );
 }
 
