@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AdvertisingSidebarCard from "./advertising/advertising-sidebar-card";
-import GoogleAdSenseSidebarSquareCard from "./advertising/google-adsense-sidebar-square-card";
-import GoogleAdSenseSidebarVerticalCard from "./advertising/google-adsense-sidebar-vertical-card";
+import GoogleAdSense from "./advertising/google-adsense";
 
 function Sidebar({ }) {
     const [advertisings, setAdvertisings] = useState([]);
@@ -23,10 +22,22 @@ function Sidebar({ }) {
     return (
         <>
             <div className="accordion-item">
-                <GoogleAdSenseSidebarSquareCard />
+                <GoogleAdSense 
+                    className={"adsbygoogle"}
+                    style={{ display: 'block' }}
+                    client={"ca-pub-7732920491288856"}
+                    slot={"4592538741"} 
+                    format="auto" 
+                    responsive="true" />
             </div>   
             <div className="accordion-item">
-                <GoogleAdSenseSidebarVerticalCard />
+                <GoogleAdSense 
+                    className={"adsbygoogle"}
+                    style={{ display: 'block' }}
+                    client={"ca-pub-7732920491288856"}
+                    slot={"4836081328"} 
+                    format="auto" 
+                    responsive="true" /> 
             </div>           
             {
                 advertisings.filter(item => item.type === "sidebar")?.map((advertising, index) => {
