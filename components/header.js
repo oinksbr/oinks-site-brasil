@@ -33,7 +33,7 @@ function Header({ simple, hideAuth }) {
           <Link href="/">
             <div className="navbar-brand">              
               <img               
-                src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/site-content/site_logo_g.png`}
+                src={`${process.env.IMAGE_BASE_URL}/site-content/site_logo_g.png`}
                 width={160}
                 height={35}                
               />

@@ -11,7 +11,7 @@ function Layout({ simpleHeader, hideAuth, children }) {
         <meta name="description" content="Oinks brasil | Seu canal de promoções" />
         <link rel="icon" href="/favicon.ico" />
         <title>Oinks Brasil</title>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732920491288856" crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732920491288856" crossOrigin="anonymous"></script>
       </Head>
       <div className="d-flex flex-column h-100">
         <Header simple={simpleHeader} hideAuth={hideAuth} />

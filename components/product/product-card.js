@@ -72,7 +72,7 @@ function ProductCard({ product }) {
         <div className="ratio ratio-1x1">
           <img
             className="card-img-top "
-            src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/uploads/${storeFolder[product.store]}/${product.oink}-300x300.png`}
+            src={`${process.env.IMAGE_BASE_URL}/upload/${product.store_prefix}/${product.oink}-300x300.png`}            
             alt="Product product.image."
             style={{ objectFit: "cover" }}
           />
@@ -89,7 +89,7 @@ function ProductCard({ product }) {
 
           </div>
           <Link className="text-product.title text-decoration-none" href={`/produto/${product.oink}`}>
-            <span>{product.title}</span>
+            <span>{product.short_title}</span>
           </Link>
         </div>
         <div className="vstack">
