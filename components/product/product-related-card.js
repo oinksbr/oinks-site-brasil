@@ -51,8 +51,8 @@ function ProductRelatedCard({ product }) {
         <div className="ratio ratio-1x1">
           <a href={`/produto/${product.oink}`}>
             <img
-              className="card-img-top"
-              src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/uploads/${storeFolder[product.store]}/${product.oink}-300x300.png`}
+              className="card-img-top"       
+              src={`${process.env.IMAGE_BASE_URL}/uploads/${product.store_prefix}/${product.oink}-300x300.png`}
               style={{ objectFit: "cover" }}
             />
           </a>

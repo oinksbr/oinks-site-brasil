@@ -77,9 +77,8 @@ function ProductDetail() {
                 <div className="col-12">
                   <div className="ratio ratio-1x1">
                     <img
-                      className="rounded"
-                      src={`https://oinks-com-br.s3.sa-east-1.amazonaws.com/uploads/${storeFolder[product.store]}/${product.oink}.png`}
-                      
+                      className="rounded"                     
+                      src={`${process.env.IMAGE_BASE_URL}/uploads/${product.store_prefix}/${product.oink}.png`}
                       alt="Product image."
                     />
                   </div>
